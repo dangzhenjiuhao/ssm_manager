@@ -96,7 +96,7 @@
       <version>${jsp-api.version}</version>
       <scope>provided</scope>
     </dependency>
-
+	<!--注释-->
     <!-- Mybatis -->
     <dependency>
       <groupId>org.mybatis</groupId>
@@ -152,7 +152,7 @@
       <version>${slf4j.version}</version>
     </dependency>
   </dependencies>
-
+	
   <build>
     <finalName>ssm_manager</finalName>
     <plugins>
