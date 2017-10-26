@@ -1,8 +1,16 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: admin
+  Date: 2017/10/27
+  Time: 1:07
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>layui后台管理模板</title>
+	<title>ssm-manager-layui后台管理模板</title>
 	<meta name="renderer" content="webkit">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta http-equiv="Access-Control-Allow-Origin" content="*">
@@ -10,10 +18,10 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="icon" href="favicon.ico">
-	<link rel="stylesheet" href="layui/css/layui.css" media="all" />
-	<link rel="stylesheet" href="../../css/font_eolqem241z66flxr.css" media="all" />
-	<link rel="stylesheet" href="css/main.css" media="all" />
+	<link rel="icon" href="${pageContext.request.contextPath}/favicon.ico">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css" media="all" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/font_eolqem241z66flxr.css" media="all" />
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" media="all" />
 </head>
 <body class="main_body">
 	<div class="layui-layout layui-layout-admin">
@@ -74,7 +82,7 @@
 						<a href="javascript:;"><i class="iconfont icon-gonggao"></i><cite>系统公告</cite></a>
 					</li>
 			    	<li class="layui-nav-item" mobile>
-			    		<a href="javascript:;" data-url="page/user/changePwd.html"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>设置</cite></a>
+			    		<a href="javascript:;" data-url="${pageContext.request.contextPath}/page/user/changePwd.html"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>设置</cite></a>
 			    	</li>
 			    	<li class="layui-nav-item" mobile>
 			    		<a href="javascript:;"><i class="iconfont icon-loginout"></i> 退出</a>
@@ -84,12 +92,12 @@
 					</li>
 					<li class="layui-nav-item" pc>
 						<a href="javascript:;">
-							<img src="images/face.jpg" class="layui-circle" width="35" height="35">
+							<img src="${pageContext.request.contextPath}/images/face.jpg" class="layui-circle" width="35" height="35">
 							<cite>请叫我马哥</cite>
 						</a>
 						<dl class="layui-nav-child">
-							<dd><a href="javascript:;" data-url="page/user/userInfo.html"><i class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>个人资料</cite></a></dd>
-							<dd><a href="javascript:;" data-url="page/user/changePwd.html"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
+							<dd><a href="javascript:;" data-url="${pageContext.request.contextPath}/page/user/userInfo.html"><i class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>个人资料</cite></a></dd>
+							<dd><a href="javascript:;" data-url="${pageContext.request.contextPath}/page/user/changePwd.html"><i class="iconfont icon-shezhi1" data-icon="icon-shezhi1"></i><cite>修改密码</cite></a></dd>
 							<dd><a href="javascript:;"><i class="iconfont icon-loginout"></i><cite>退出</cite></a></dd>
 						</dl>
 					</li>
@@ -99,7 +107,7 @@
 		<!-- 左侧导航 -->
 		<div class="layui-side layui-bg-black">
 			<div class="user-photo">
-				<a class="img" title="我的头像" ><img src="images/face.jpg"></a>
+				<a class="img" title="我的头像" ><img src="${pageContext.request.contextPath}/images/face.jpg"></a>
 				<p>你好！<span class="userName">请叫我马哥</span>, 欢迎登录</p>
 			</div>
 			<div class="navBar layui-side-scroll"></div>
@@ -112,7 +120,7 @@
 				</ul>
 				<div class="layui-tab-content clildFrame">
 					<div class="layui-tab-item layui-show">
-						<iframe src="page/main.html"></iframe>
+						<iframe src="${pageContext.request.contextPath}/page/main.html"></iframe>
 					</div>
 				</div>
 			</div>
@@ -125,7 +133,7 @@
 
 	<!-- 锁屏 -->
 	<div class="admin-header-lock" id="lock-box" style="display: none;">
-		<div class="admin-header-lock-img"><img src="images/face.jpg"/></div>
+		<div class="admin-header-lock-img"><img src="${pageContext.request.contextPath}/images/face.jpg"/></div>
 		<div class="admin-header-lock-name" id="lockUserName">请叫我马哥</div>
 		<div class="input_btn">
 			<input type="password" class="admin-header-lock-input layui-input" placeholder="请输入密码解锁.." name="lockPwd" id="lockPwd" />
@@ -137,9 +145,9 @@
 	<div class="site-tree-mobile layui-hide"><i class="layui-icon">&#xe602;</i></div>
 	<div class="site-mobile-shade"></div>
 
-	<script type="text/javascript" src="layui/layui.js"></script>
-	<script type="text/javascript" src="js/nav.js"></script>
-	<script type="text/javascript" src="js/leftNav.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/layui/layui.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/nav.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/leftNav.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/index.js"></script>
 </body>
 </html>
