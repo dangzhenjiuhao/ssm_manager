@@ -11,7 +11,7 @@ layui.config({
 	})
 
 	//动态获取文章总数和待审核文章数量,最新文章
-	$.get("../json/newsList.json",
+	$.get("/json/newsList.json",
 		function(data){
 			var waitNews = [];
 			$(".allNews span").text(data.length);  //文章总数
@@ -67,7 +67,7 @@ layui.config({
 		fillParameter(systemParameter);
 	}else{
 		$.ajax({
-			url : "../json/systemParameter.json",
+			url : "/json/systemParameter.json",
 			type : "get",
 			dataType : "json",
 			success : function(data){

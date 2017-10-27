@@ -102,6 +102,13 @@
             <scope>provided</scope>
         </dependency>
         <!--注释-->
+        <!-- Jackson Json处理工具包 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
         <!-- Mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -162,6 +169,26 @@
         <finalName>ssm_manager</finalName>
         <plugins>
             <!--mybatis逆向工程插件-->
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.2</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+            </plugin>
+
+            <!--tomcat插件-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <port>8080</port>
+                    <path>/</path>
+                </configuration>
+            </plugin>
+
 
             <!-- 资源文件拷贝插件 -->
             <!--<plugin>

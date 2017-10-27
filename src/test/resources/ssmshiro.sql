@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2017-10-26 17:27:41
+Date: 2017-10-27 17:38:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -70,6 +70,32 @@ INSERT INTO `role_permission` VALUES ('1', '2', '1');
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `username` varchar(20) NOT NULL COMMENT '用户名',
+  `password` varchar(20) NOT NULL COMMENT '密码',
+  `email` varchar(20) DEFAULT NULL COMMENT '用户邮箱',
+  `mobile` varchar(20) DEFAULT NULL COMMENT '用户手机',
+  `reg_time` datetime DEFAULT NULL COMMENT '注册时间',
+  `reg_ip` varchar(20) DEFAULT NULL COMMENT '注册IP',
+  `last_login_time` datetime DEFAULT NULL COMMENT '最后登录时间',
+  `last_login_ip` varchar(20) DEFAULT NULL COMMENT '最后登录IP',
+  `update_time` datetime DEFAULT NULL COMMENT '更新时间',
+  `status` tinyint(4) DEFAULT NULL COMMENT '用户状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of user
+-- ----------------------------
+INSERT INTO `user` VALUES ('1', '11', '11', '11', '11', '2017-10-27 17:36:10', '127.0.0.1', '2017-10-27 17:36:10', '127.0.0.1', '2017-10-27 17:36:10', '1');
+INSERT INTO `user` VALUES ('2', '11', '11', '1', '1', '2017-10-27 17:37:11', '127.0.0.1', '2017-10-27 17:37:11', '127.0.0.1', '2017-10-27 17:37:11', null);
+INSERT INTO `user` VALUES ('3', '1', '11', '11', '11', '2017-10-27 17:37:45', '127.0.0.1', '2017-10-27 17:37:45', '127.0.0.1', '2017-10-27 17:37:45', null);
+
+-- ----------------------------
+-- Table structure for user1
+-- ----------------------------
+DROP TABLE IF EXISTS `user1`;
+CREATE TABLE `user1` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户id',
   `username` varchar(50) DEFAULT NULL COMMENT '用户名',
   `password` char(64) DEFAULT NULL COMMENT '密码',
@@ -79,9 +105,9 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC COMMENT='用户表';
 
 -- ----------------------------
--- Records of user
+-- Records of user1
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'starzou', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', null, '2014-07-17 12:59:08');
+INSERT INTO `user1` VALUES ('1', 'starzou', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '1', '2014-07-17 12:59:08');
 
 -- ----------------------------
 -- Table structure for user_role

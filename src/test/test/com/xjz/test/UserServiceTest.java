@@ -22,8 +22,8 @@ public class UserServiceTest {
 
     @Test
     public void test() {
-        User user = userService.selectByPrimaryKey(1L);
-        System.out.println(user.getUsername());
+        //User user = userService.selectByPrimaryKey(1L);
+        //System.out.println(user.getUsername());
     }
 
     @Test

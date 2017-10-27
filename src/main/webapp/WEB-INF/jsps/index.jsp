@@ -18,7 +18,7 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="format-detection" content="telephone=no">
-	<link rel="icon" href="${pageContext.request.contextPath}/favicon.ico">
+	<link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico"/>
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/layui/css/layui.css" media="all" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/font_eolqem241z66flxr.css" media="all" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/main.css" media="all" />
@@ -93,7 +93,7 @@
 					<li class="layui-nav-item" pc>
 						<a href="javascript:;">
 							<img src="${pageContext.request.contextPath}/images/face.jpg" class="layui-circle" width="35" height="35">
-							<cite>请叫我马哥</cite>
+							<cite>请叫我xxx</cite>
 						</a>
 						<dl class="layui-nav-child">
 							<dd><a href="javascript:;" data-url="${pageContext.request.contextPath}/page/user/userInfo.html"><i class="iconfont icon-zhanghu" data-icon="icon-zhanghu"></i><cite>个人资料</cite></a></dd>
@@ -108,7 +108,7 @@
 		<div class="layui-side layui-bg-black">
 			<div class="user-photo">
 				<a class="img" title="我的头像" ><img src="${pageContext.request.contextPath}/images/face.jpg"></a>
-				<p>你好！<span class="userName">请叫我马哥</span>, 欢迎登录</p>
+				<p>你好！<span class="userName">请叫我xxx</span>, 欢迎登录</p>
 			</div>
 			<div class="navBar layui-side-scroll"></div>
 		</div>
@@ -120,21 +120,21 @@
 				</ul>
 				<div class="layui-tab-content clildFrame">
 					<div class="layui-tab-item layui-show">
-						<iframe src="${pageContext.request.contextPath}/page/main.html"></iframe>
+						<iframe src="${pageContext.request.contextPath}/page/main/main"></iframe>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- 底部 -->
 		<div class="layui-footer footer">
-			<p>copyright @2017 请叫我马哥 更多模板：<a href="http://www.mycodes.net/" target="_blank">源码之家</a>　　<a onclick="donation()" class="layui-btn layui-btn-danger l·ayui-btn-small">捐赠作者</a></p>
+			<p>copyright @2017 请叫我xxxxx 更多模板：<a href="http://www.mycodes.net/" target="_blank">源码之家</a>　　<a onclick="donation()" class="layui-btn layui-btn-danger l·ayui-btn-small">捐赠作者</a></p>
 		</div>
 	</div>
 
 	<!-- 锁屏 -->
 	<div class="admin-header-lock" id="lock-box" style="display: none;">
 		<div class="admin-header-lock-img"><img src="${pageContext.request.contextPath}/images/face.jpg"/></div>
-		<div class="admin-header-lock-name" id="lockUserName">请叫我马哥</div>
+		<div class="admin-header-lock-name" id="lockUserName">XXXXX</div>
 		<div class="input_btn">
 			<input type="password" class="admin-header-lock-input layui-input" placeholder="请输入密码解锁.." name="lockPwd" id="lockPwd" />
 			<button class="layui-btn" id="unlock">解锁</button>

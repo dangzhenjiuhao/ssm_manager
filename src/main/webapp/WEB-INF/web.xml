@@ -10,6 +10,7 @@
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
 
+
   <!-- 加载spring容器 -->
   <context-param>
     <param-name>contextConfigLocation</param-name>
@@ -49,4 +50,5 @@
     <servlet-name>springMvc</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
 </web-app>

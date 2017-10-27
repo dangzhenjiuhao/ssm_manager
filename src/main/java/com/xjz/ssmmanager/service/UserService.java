@@ -11,7 +11,7 @@ public interface UserService {
 
     int deleteByExample(UserExample example);
 
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(Integer id);
 
     int insert(User record);
 
@@ -19,7 +19,7 @@ public interface UserService {
 
     List<User> selectByExample(UserExample example);
 
-    User selectByPrimaryKey(Long id);
+    User selectByPrimaryKey(Integer id);
 
     int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
 
@@ -29,3 +29,4 @@ public interface UserService {
 
     int updateByPrimaryKey(User record);
 }
+

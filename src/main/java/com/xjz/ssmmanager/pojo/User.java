@@ -3,21 +3,33 @@ package com.xjz.ssmmanager.pojo;
 import java.util.Date;
 
 public class User {
-    private Long id;
+    private Integer id;
 
     private String username;
 
     private String password;
 
-    private String state;
+    private String email;
 
-    private Date createTime;
+    private String mobile;
 
-    public Long getId() {
+    private Date regTime;
+
+    private String regIp;
+
+    private Date lastLoginTime;
+
+    private String lastLoginIp;
+
+    private Date updateTime;
+
+    private Byte status;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -37,19 +49,67 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getState() {
-        return state;
+    public String getEmail() {
+        return email;
     }
 
-    public void setState(String state) {
-        this.state = state == null ? null : state.trim();
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
     }
 
-    public Date getCreateTime() {
-        return createTime;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
+    }
+
+    public Date getRegTime() {
+        return regTime;
+    }
+
+    public void setRegTime(Date regTime) {
+        this.regTime = regTime;
+    }
+
+    public String getRegIp() {
+        return regIp;
+    }
+
+    public void setRegIp(String regIp) {
+        this.regIp = regIp == null ? null : regIp.trim();
+    }
+
+    public Date getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(Date lastLoginTime) {
+        this.lastLoginTime = lastLoginTime;
+    }
+
+    public String getLastLoginIp() {
+        return lastLoginIp;
+    }
+
+    public void setLastLoginIp(String lastLoginIp) {
+        this.lastLoginIp = lastLoginIp == null ? null : lastLoginIp.trim();
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 }
