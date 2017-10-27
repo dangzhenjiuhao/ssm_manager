@@ -6,16 +6,25 @@ layui.config({
         laypage = layui.laypage,
         $ = layui.jquery;
 
+    //分页
+    var nums = 10; //每页出现的数据量
     //加载页面数据
     var usersData = '';
-    $.get("/user/list", function (data) {
-        usersData = data;
-        if (window.sessionStorage.getItem("addUser")) {
-            var addUsers = window.sessionStorage.getItem("addUser");
-            usersData = JSON.parse(addUsers).concat(usersData);
+    $.get("/user/list?currentPage=1&pageSize="+nums, function (data) {
+        if (data.statusCode == 200){
+            usersData = data.data.datas;
+            console.log(data.data.allCount);
+            console.log(usersData);
+            if (window.sessionStorage.getItem("addUser")) {
+                var addUsers = window.sessionStorage.getItem("addUser");
+                usersData = JSON.parse(addUsers).concat(usersData);
+            }
+            //执行加载数据的方法
+            usersList(data.data.allCount);
+        }else{
+            layer.msg("数据异常");
         }
-        //执行加载数据的方法
-        usersList();
+
     })
 
     //查询
@@ -145,7 +154,7 @@ layui.config({
         });
     })
 
-    function usersList() {
+    function usersList(allCount) {
         //渲染数据
         function renderDate(data, curr) {
             var dataHtml = '';
@@ -175,12 +184,15 @@ layui.config({
             return dataHtml;
         }
 
-        //分页
-        var nums = 13; //每页出现的数据量
+
         laypage({
             cont: "page",
-            pages: Math.ceil(usersData.length / nums),
+            pages: Math.ceil(allCount / nums),
             jump: function (obj) {
+                console.log(obj.curr);
+                console.log(nums);
+
+
                 $(".users_content").html(renderDate(usersData, obj.curr));
                 $('.users_list thead input[type="checkbox"]').prop("checked", false);
                 form.render();

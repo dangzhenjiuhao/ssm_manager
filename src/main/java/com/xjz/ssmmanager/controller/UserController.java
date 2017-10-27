@@ -1,6 +1,7 @@
 package com.xjz.ssmmanager.controller;
 
 import com.xjz.ssmmanager.common.pojo.MessageResult;
+import com.xjz.ssmmanager.common.pojo.TransData;
 import com.xjz.ssmmanager.pojo.User;
 import com.xjz.ssmmanager.pojo.UserExample;
 import com.xjz.ssmmanager.service.UserService;
@@ -43,9 +44,13 @@ public class UserController {
 
     @RequestMapping("list")
     @ResponseBody
-    public List<User> getList() {
-        UserExample example = new UserExample();
-        List<User> users = userService.selectByExample(example);
-        return users;
+    public MessageResult getList(int pageSize, int currentPage) {
+        pageSize = pageSize == 0 ? 10 : pageSize;
+        currentPage = currentPage == 0 ? 1 : currentPage;
+        TransData<User> data = userService.getPageList(currentPage,pageSize);
+        MessageResult<User> result = new MessageResult<User>();
+        result.setStatusCode(200);
+        result.setData(data);
+        return result;
     }
 }

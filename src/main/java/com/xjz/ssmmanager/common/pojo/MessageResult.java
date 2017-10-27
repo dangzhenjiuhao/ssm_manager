@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class MessageResult<T> implements Serializable{
     private int statusCode;
-    private T data;
+    private TransData<T> data;
 
     public int getStatusCode() {
         return statusCode;
@@ -14,18 +14,18 @@ public class MessageResult<T> implements Serializable{
         this.statusCode = statusCode;
     }
 
-    public T getData() {
+    public TransData<T> getData() {
         return data;
     }
 
-    public void setData(T data) {
+    public void setData(TransData<T> data) {
         this.data = data;
     }
 
     public MessageResult() {
     }
 
-    public MessageResult(int statusCode, T data) {
+    public MessageResult(int statusCode, TransData<T> data) {
         this.statusCode = statusCode;
         this.data = data;
     }

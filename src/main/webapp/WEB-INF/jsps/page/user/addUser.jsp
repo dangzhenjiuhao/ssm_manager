@@ -42,7 +42,7 @@ To change this template use File | Settings | File Templates.
 		<div class="layui-form-item">
 			<label class="layui-form-label">邮箱</label>
 			<div class="layui-input-block">
-				<input type="text" class="layui-input email"  placeholder="请输入登邮箱">
+				<input type="text" class="layui-input email" lay-verify="required|email"  placeholder="请输入登邮箱">
 			</div>
 		</div>
 		<div class="layui-form-item">

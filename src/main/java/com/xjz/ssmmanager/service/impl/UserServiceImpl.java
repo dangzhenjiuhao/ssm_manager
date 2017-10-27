@@ -1,5 +1,9 @@
 package com.xjz.ssmmanager.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.xjz.ssmmanager.common.pojo.MessageResult;
+import com.xjz.ssmmanager.common.pojo.TransData;
 import com.xjz.ssmmanager.mapper.UserMapper;
 import com.xjz.ssmmanager.pojo.User;
 import com.xjz.ssmmanager.pojo.UserExample;
@@ -69,5 +73,22 @@ public class UserServiceImpl implements UserService {
     @Override
     public int updateByPrimaryKey(User record) {
         return userMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public TransData<User> getPageList(int currentPage, int pageSize) {
+        //设置分页信息
+        PageHelper.startPage(currentPage,pageSize);
+        //执行查询
+        UserExample example = new UserExample();
+        List<User> list = userMapper.selectByExample(example);
+        //取分页信息
+        PageInfo<User> pageInfo = new PageInfo<User>(list);
+        //创建返回结果对象
+        TransData<User> result = new TransData<User>();
+        int allCount = (int)pageInfo.getTotal();
+        result.setAllCount(allCount);
+        result.setDatas(list);
+        return result;
     }
 }

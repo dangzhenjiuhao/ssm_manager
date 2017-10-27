@@ -1,5 +1,7 @@
 package com.xjz.ssmmanager.service;
 
+import com.xjz.ssmmanager.common.pojo.MessageResult;
+import com.xjz.ssmmanager.common.pojo.TransData;
 import com.xjz.ssmmanager.pojo.User;
 import com.xjz.ssmmanager.pojo.UserExample;
 import org.apache.ibatis.annotations.Param;
@@ -28,5 +30,7 @@ public interface UserService {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    TransData<User> getPageList(int currentPage, int pageSize);
 }
 
