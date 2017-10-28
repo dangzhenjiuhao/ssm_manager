@@ -91,4 +91,38 @@ public class UserServiceImpl implements UserService {
         result.setDatas(list);
         return result;
     }
+
+    @Override
+    public TransData<User> getPageList(int currentPage, int pageSize, String keyWord) {
+        //设置分页信息
+        PageHelper.startPage(currentPage,pageSize);
+        //执行查询
+        UserExample example = new UserExample();
+        if (keyWord != null && keyWord != ""){
+            String queryKeyWord = "%" + keyWord + "%";
+            UserExample.Criteria criteria = example.createCriteria();
+            criteria.andUsernameLike(keyWord);
+            criteria.andEmailLike(queryKeyWord);
+            criteria.andMobileLike(queryKeyWord);
+        }
+        List<User> list = userMapper.selectByExample(example);
+        //取分页信息
+        PageInfo<User> pageInfo = new PageInfo<User>(list);
+        //创建返回结果对象
+        TransData<User> result = new TransData<User>();
+        int allCount = (int)pageInfo.getTotal();
+        result.setAllCount(allCount);
+        result.setDatas(list);
+        return result;
+    }
+
+    @Override
+    public int updateStatus(User user) {
+        return userMapper.updateStatus(user);
+    }
+
+    @Override
+    public int deleteByBatch(Integer[] ids) {
+        return userMapper.deleteByBatch(ids);
+    }
 }

@@ -32,5 +32,11 @@ public interface UserService {
     int updateByPrimaryKey(User record);
 
     TransData<User> getPageList(int currentPage, int pageSize);
+
+    TransData<User> getPageList(int currentPage, int pageSize, String keyWord);
+
+    int updateStatus(User user);
+
+    int deleteByBatch(Integer[] ids);
 }
 

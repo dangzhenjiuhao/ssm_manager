@@ -1,5 +1,8 @@
 package com.xjz.ssmmanager.pojo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Date;
 
 public class User {
@@ -7,23 +10,25 @@ public class User {
 
     private String username;
 
+    @JsonIgnoreProperties(ignoreUnknown = true)
     private String password;
 
     private String email;
 
     private String mobile;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date regTime;
 
     private String regIp;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastLoginTime;
 
     private String lastLoginIp;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
-    private Byte status;
+    private Byte status = (byte)1;
 
     public Integer getId() {
         return id;

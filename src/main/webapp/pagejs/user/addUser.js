@@ -10,9 +10,9 @@ layui.config({
  	var addUserArray = [],addUser;
  	form.on("submit(addUser)",function(data){
  		//是否添加过信息
-	 	if(window.sessionStorage.getItem("addUser")){
+	 	/*if(window.sessionStorage.getItem("addUser")){
 	 		addUserArray = JSON.parse(window.sessionStorage.getItem("addUser"));
-	 	}
+	 	}*/
 
  		//addUser = '{"usersId":"'+ new Date().getTime() +'",';//id
  		addUser =  '{"username":"'+ $(".username").val() +'",';  //登录名
@@ -23,8 +23,8 @@ layui.config({
 		//var jData = JSON.parse(addUser);
 
  		//console.log(addUser);
- 		addUserArray.unshift(JSON.parse(addUser));
- 		window.sessionStorage.setItem("addUser",JSON.stringify(addUserArray));
+ 		/*addUserArray.unshift(JSON.parse(addUser));
+ 		window.sessionStorage.setItem("addUser",JSON.stringify(addUserArray));*/
  		//弹出loading
  		var index = top.layer.msg('数据提交中，请稍候',{icon: 16,time:false,shade:0.8});
 
@@ -65,14 +65,6 @@ layui.config({
                 parent.location.reload();
             }
         })
-
-        setTimeout(function(){
-           /* top.layer.close(index);
-			top.layer.msg("用户添加成功！");
- 			layer.closeAll("iframe");
-	 		//刷新父页面
-	 		parent.location.reload();*/
-        },2000);
  		return false;
  	})
 	

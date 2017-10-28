@@ -24,10 +24,24 @@ public class UserServiceTest {
     public void test() {
         //User user = userService.selectByPrimaryKey(1L);
         //System.out.println(user.getUsername());
+        int id = 5;
+        byte status = 1;
+        User user = new User();
+        user.setId(id);
+        user.setStatus(status);
+        int result = userService.updateStatus(user);
+        System.out.println(result);
     }
 
     @Test
     public void testDataSource(){
         System.out.println(dataSource);
+    }
+
+    @Test
+    public void testDeleteByBatch(){
+        Integer[] ids = {7,8};
+        int i = userService.deleteByBatch(ids);
+        System.out.println(i);
     }
 }
