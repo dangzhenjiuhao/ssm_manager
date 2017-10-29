@@ -44,4 +44,9 @@ public class UserServiceTest {
         int i = userService.deleteByBatch(ids);
         System.out.println(i);
     }
+
+    @Test
+    public void test3(){
+        System.out.println("xxx");
+    }
 }
