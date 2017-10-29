@@ -1,4 +1,4 @@
-package com.xjz.ssmmanager.common.controller;
+package com.xjz.ssmmanager.common.handlers;
 
 import com.xjz.ssmmanager.common.execeptions.PageNotFoundException;
 import com.xjz.ssmmanager.common.execeptions.ServerException;
