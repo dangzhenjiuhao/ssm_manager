@@ -30,7 +30,7 @@ To change this template use File | Settings | File Templates.
 		<div class="layui-form-item">
 			<label class="layui-form-label">登录名</label>
 			<div class="layui-input-block">
-				<input type="text" class="layui-input username" lay-verify="required" placeholder="请输入登录名">
+				<input type="text" id="username" class="layui-input username" lay-verify="required" placeholder="请输入登录名"><span id="checkUserName"></span>
 			</div>
 		</div>
 		<div class="layui-form-item">

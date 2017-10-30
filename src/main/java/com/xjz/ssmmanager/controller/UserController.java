@@ -6,16 +6,16 @@ import com.xjz.ssmmanager.common.pojo.TransData;
 import com.xjz.ssmmanager.pojo.User;
 import com.xjz.ssmmanager.pojo.UserExample;
 import com.xjz.ssmmanager.service.UserService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.DigestUtils;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import sun.plugin2.message.Message;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.List;
 
@@ -47,10 +47,18 @@ public class UserController {
 
     @RequestMapping("list")
     @ResponseBody
-    public MessageResult getList(int pageSize, int currentPage) {
-        pageSize = pageSize == 0 ? 10 : pageSize;
-        currentPage = currentPage == 0 ? 1 : currentPage;
-        TransData<User> data = userService.getPageList(currentPage, pageSize);
+    public MessageResult getList(@RequestParam(value="pageSize",required = false,defaultValue = "10") int pageSize,@RequestParam(value="currentPage",required = false,defaultValue = "1") int currentPage, @RequestParam(value="keyWord",required = false,defaultValue = "") String keyWord) {
+        TransData<User> data = null;
+        try {
+            keyWord = new String(keyWord.getBytes("ISO-8859-1"),"UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        if (StringUtils.isEmpty(keyWord)){
+            data = userService.getPageList(currentPage, pageSize);
+        }else{
+            data = userService.getPageList(currentPage, pageSize, keyWord);
+        }
         MessageResult<User> result = new MessageResult<User>();
         result.setStatusCode(200);
         result.setData(data);
@@ -118,5 +126,12 @@ public class UserController {
             messageResult.setStatusCode(500);
         }
         return messageResult;
+    }
+
+    @RequestMapping("exists")
+    @ResponseBody
+    public int checkUserIsExists(String userName){
+        int result = userService.checkIsExists(userName);
+        return result;
     }
 }

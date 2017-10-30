@@ -38,5 +38,7 @@ public interface UserService {
     int updateStatus(User user);
 
     int deleteByBatch(Integer[] ids);
+
+    int checkIsExists(String userName);
 }
 

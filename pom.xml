@@ -150,6 +150,13 @@
             <version>${commons-fileupload.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
+
+
         <!-- 单元测试 -->
         <dependency>
             <groupId>junit</groupId>

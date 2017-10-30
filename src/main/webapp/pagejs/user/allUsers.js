@@ -12,26 +12,22 @@ layui.config({
     var usersData = '';
 
     //获取数据
-    function getDataList(currentPage) {
+    function getDataList(currentPage,keyWord) {
+        var index = layer.msg('查询中，请稍候', {icon: 16, time: false, shade: 0.8});
         if (!currentPage) {
             currentPage = 1;
         }
         $.get("/user/list?currentPage=" + currentPage + "&pageSize=" + nums, function (data) {
+            layer.close(index);
             if (data.statusCode == 200) {
                 usersData = data.data.datas;
-                console.log(data.data.allCount);
-                console.log(usersData);
-                /*if (window.sessionStorage.getItem("addUser")) {
-                    var addUsers = window.sessionStorage.getItem("addUser");
-                    usersData = JSON.parse(addUsers).concat(usersData);
-                }*/
                 //执行加载数据的方法
                 usersList(data.data.allCount);
             } else {
                 layer.msg("数据异常");
             }
-
         });
+
     }
 
     //带查询条件的分页
@@ -82,6 +78,9 @@ layui.config({
         var userArray = [];
         if ($(".search_input").val() != '') {
             var index = layer.msg('查询中，请稍候', {icon: 16, time: false, shade: 0.8});
+            setTimeout(function(){
+                console.log("xxx")
+            },5000)
             getDataListByKeyWord(1,$(".search_input").val());
             layer.close(index);
         } else {
@@ -134,6 +133,11 @@ layui.config({
             layer.msg("请选中要删除的记录! ");
         }
         console.log(chk_value);
+    });
+
+    //刷新
+    $(".batchRefresh").click(function (){
+        getDataList();
     });
 
     //全选
@@ -227,23 +231,19 @@ layui.config({
         laypage({
             cont: "page",
             pages: Math.ceil(allCount / nums),
-            jump: function (obj) {
+            jump: function (obj,first) {
                 console.log(obj.curr);
                 console.log(nums);
-
-                //$.get("/user/list?currentPage=" + obj.curr + "&pageSize=" + nums, function (data) {
-                $.get("/user/list?currentPage=" + obj.curr + "&pageSize=" + nums + "&keyWord=" + $(".search_input").val(), function (data) {
-                    if (data.statusCode == 200) {
-                        usersData = data.data.datas;
-                        console.log(data.data.allCount);
-                        console.log(usersData);
-
-                        $(".users_content").html(renderDate(usersData, obj.curr));
-                        $('.users_list thead input[type="checkbox"]').prop("checked", false);
-                        form.render();
-                    }
-                });
-
+                if (!first) {
+                    $.get("/user/list?currentPage=" + obj.curr + "&pageSize=" + nums + "&keyWord=" + $(".search_input").val(), function (data) {
+                        if (data.statusCode == 200) {
+                            usersData = data.data.datas;
+                        }
+                    });
+                }
+                $(".users_content").html(renderDate(usersData, obj.curr));
+                $('.users_list thead input[type="checkbox"]').prop("checked", false);
+                form.render();
 
             }
         })

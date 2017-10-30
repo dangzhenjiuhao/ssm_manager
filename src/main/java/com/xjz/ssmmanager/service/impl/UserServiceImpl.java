@@ -98,13 +98,15 @@ public class UserServiceImpl implements UserService {
         PageHelper.startPage(currentPage,pageSize);
         //执行查询
         UserExample example = new UserExample();
-        if (keyWord != null && keyWord != ""){
+        UserExample.Criteria criteria = example.createCriteria();
+        UserExample.Criteria criteria1 = example.createCriteria();
+        //if (keyWord != null && keyWord != ""){
             String queryKeyWord = "%" + keyWord + "%";
-            UserExample.Criteria criteria = example.createCriteria();
-            criteria.andUsernameLike(keyWord);
-            criteria.andEmailLike(queryKeyWord);
-            criteria.andMobileLike(queryKeyWord);
-        }
+            criteria.andUsernameLike(queryKeyWord);
+            criteria1.andEmailLike(queryKeyWord);
+            //criteria.andMobileLike(queryKeyWord);
+       // }
+        example.or(criteria1);
         List<User> list = userMapper.selectByExample(example);
         //取分页信息
         PageInfo<User> pageInfo = new PageInfo<User>(list);
@@ -125,4 +127,14 @@ public class UserServiceImpl implements UserService {
     public int deleteByBatch(Integer[] ids) {
         return userMapper.deleteByBatch(ids);
     }
+
+    @Override
+    public int checkIsExists(String userName) {
+        UserExample example = new UserExample();
+        UserExample.Criteria criteria = example.createCriteria();
+        criteria.andUsernameEqualTo(userName);
+        return userMapper.countByExample(example);
+    }
+
+
 }
